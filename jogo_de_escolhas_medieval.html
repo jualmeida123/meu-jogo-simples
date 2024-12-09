@@ -1,0 +1,94 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Medieval</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .image-container {
+            background: url('paisagem_medieval.jpg') no-repeat center;
+            background-size: cover;
+            height: 300px;
+            border-radius: 10px;
+        }
+        .story {
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container"></div>
+        <div id="story" class="story">
+            Você é um jovem cavaleiro em busca de fama e glória. Um dia, chega até você uma carta misteriosa dizendo que o lendário *Amuleto de Eldoria* está escondido nas terras ao norte. Você decide embarcar nessa jornada. O que você fará primeiro?
+        </div>
+        <div id="buttons" class="buttons">
+            <button class="button" onclick="chooseOption('explorarFloresta')">Explorar a floresta próxima</button>
+            <button class="button" onclick="chooseOption('irParaCastelo')">Ir direto para o castelo abandonado</button>
+        </div>
+    </div>
+
+    <script>
+        function chooseOption(option) {
+            const storyElement = document.getElementById("story");
+            const buttonsElement = document.getElementById("buttons");
+
+            if (option === "explorarFloresta") {
+                storyElement.innerHTML = "Você entra na floresta e encontra um velho sábio que lhe dá um mapa mágico. No entanto, ele avisa sobre perigos escondidos na escuridão. Você seguirá o mapa ou retornará ao vilarejo?";
+                buttonsElement.innerHTML = `
+                    <button class="button" onclick="chooseOption('seguirMapa')">Seguir o mapa</button>
+                    <button class="button" onclick="chooseOption('retornarVilarejo')">Retornar ao vilarejo</button>
+                `;
+            } else if (option === "irParaCastelo") {
+                storyElement.innerHTML = "Ao chegar ao castelo, você percebe que está sendo observado por criaturas sombrias. Você entrará no castelo ou buscará reforços?";
+                buttonsElement.innerHTML = `
+                    <button class="button" onclick="chooseOption('entrarCastelo')">Entrar no castelo</button>
+                    <button class="button" onclick="chooseOption('buscarReforcos')">Buscar reforços</button>
+                `;
+            } else if (option === "seguirMapa") {
+                storyElement.innerHTML = "Seguindo o mapa, você encontra o Amuleto de Eldoria! Porém, uma fera mágica o guarda. Você decide enfrentá-la e, após uma batalha árdua, sai vitorioso! Parabéns, sua jornada foi concluída com sucesso.";
+                buttonsElement.innerHTML = `<button class="button" onclick="location.reload()">Recomeçar</button>`;
+            } else if (option === "retornarVilarejo") {
+                storyElement.innerHTML = "Você retorna ao vilarejo e percebe que talvez a jornada fosse arriscada demais. Fica em segurança, mas a glória escapa por entre seus dedos.";
+                buttonsElement.innerHTML = `<button class="button" onclick="location.reload()">Recomeçar</button>`;
+            } else if (option === "entrarCastelo") {
+                storyElement.innerHTML = "Dentro do castelo, você encontra uma sala repleta de tesouros. No entanto, uma armadilha é ativada, e você precisa fugir antes que seja tarde demais. Você consegue escapar com uma relíquia valiosa.";
+                buttonsElement.innerHTML = `<button class="button" onclick="location.reload()">Recomeçar</button>`;
+            } else if (option === "buscarReforcos") {
+                storyElement.innerHTML = "Você busca reforços no vilarejo. Juntos, vocês invadem o castelo e derrotam as criaturas sombrias, mas o Amuleto de Eldoria já foi levado por outro aventureiro.";
+                buttonsElement.innerHTML = `<button class="button" onclick="location.reload()">Recomeçar</button>`;
+            }
+        }
+    </script>
+</body>
+</html>
